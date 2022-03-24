@@ -1,0 +1,19 @@
+html {
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.body {
+    background-color: rgb(255 217 0 / 30%);
+    font-family: 'Lato', sans-serif;
+    margin: 20px auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+}
