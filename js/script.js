@@ -1,34 +1,48 @@
-console.log("A dżem dobry!");
-
-let formElement = document.querySelector(".js-form");
-let amountElement = document.querySelector(".js-amount");
-let currencyElement = document.querySelector(".js-currency");
-let resultElement = document.querySelector(".js-result");
-
-let EUR = 4.94;
-let USD = 4.55;
-
-amountElement.focus();
-
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    let amount = amountElement.value;
-    let currency = currencyElement.value;
-    let result;
-
-    switch (currency) {
-        case "EUR":
-            result = amount * EUR;
-            break;
-
-        case "USD":
-            result = amount * USD;
-            break;
+{
+    const welcome = () => {
+        console.log("A dżem dobry!");
     }
-    resultElement.innerText = result.toFixed(2);
 
-});
+    const calculateResult = (amount, currency) => {
+        const EUR = 4.94;
+        const USD = 4.55;
 
+        switch (currency) {
+            case "EUR":
+                return amount / EUR;
+
+            case "USD":
+                return amount / USD;
+        }
+    }
+
+    const updateResultText = (result) => {
+        const resultElement = document.querySelector(".js-result");
+        resultElement.innerText = result.toFixed(2);
+    }
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        const amountElement = document.querySelector(".js-amount");
+        const currencyElement = document.querySelector(".js-currency");
+
+        const amount = +amountElement.value;
+        const currency = currencyElement.value;
+       
+        const result = calculateResult(amount, currency);
+
+        updateResultText(amount, result, currency);
+    }
+
+    const init = () => {
+        const formElement = document.querySelector(".js-form");
+
+        formElement.addEventListener("submit", onFormSubmit);
+        
+        welcome();
+    };
+    init();
+}
 
 
